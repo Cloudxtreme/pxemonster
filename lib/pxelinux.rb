@@ -1,13 +1,12 @@
-class PXELinux {
+class PXELinux 
 
-	def initialize(){
+	def initialize()
 		@host_configs = HostConfigs.new
-	}
+	end
 
 
-	def get_host_info(ip){
-		h = @host_configs.select { |h| h['ip'] == ip}
-		h
-	}
+	def get_host_info(ip)
+		@host_configs[ip]
+	end
 
-}
+end

@@ -1,9 +1,4 @@
 ip: 10.0.0.2
 host_name: host1.somewhere.net
 mac: 6a:00:01:84:5e:30
-
-# You must indent the below by one space
-pxe_config: |
- This is a test
- of
- a
+pxe_template: ubuntu_1404.erb

@@ -1,0 +1,7 @@
+default ubuntu1404
+
+label ubuntu1404
+  kernel ubuntu1404/linux
+  append initrd=ubuntu1404/initrd.gz ks=<%= @kick_start_url %>
+  prompt 0
+  timeout 0

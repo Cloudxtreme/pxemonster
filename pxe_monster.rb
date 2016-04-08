@@ -7,7 +7,7 @@ require 'sinatra'
 class PxeMonster < Sinatra::Base
 
   set :client_headers,  { "Content-Type" => "application/json"}
-  set :pxe, PXELinux.new
+
 
 
   delete '/pxe' do
@@ -15,7 +15,9 @@ class PxeMonster < Sinatra::Base
   end
 
   get '/pxe?' do
-request_ip = params.fetch()
-    [200, settings.client_headers, settings.pxe.get_host(request.ip).to_json]
+	request_ip = params.fetch('spoof', request.ip)
+	d = PXELinux.new.get_host_info(request_ip)
+	return [404, settings.client_headers, {:error => "No PXE data for #{request_ip}"}.to_json] if d.nil?
+    [200, settings.client_headers, d.to_json]
   end
 end

@@ -1,3 +1,4 @@
 ip: 10.0.0.3
 host_name: host2.somewhere.net
 mac: 6a:00:01:84:5e:31
+pxe_template: ubuntu_1404.erb

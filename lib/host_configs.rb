@@ -14,14 +14,14 @@ class HostConfigs  < Hash
 			next unless f.extname == '.yml' or f.extname == '.yaml'
 			
 			cf = config_dir.join(f)
-			data = YAML::load_file(cf) #rescue nil
+			data = YAML::load_file(cf) rescue nil
 			next if data.nil?
 
 			next unless data['ip'] 
 			next unless data['host_name'] 
 			next unless data['mac']
+			next unless data['pxe_template']
 
-			data['data_file'] = cf
 			self[data['ip']]  = data
 		}
 	end
