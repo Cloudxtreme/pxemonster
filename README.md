@@ -1,4 +1,4 @@
-# pxemonster
+# pxe monster
 
 Utility to manage PXE files via web service call
 

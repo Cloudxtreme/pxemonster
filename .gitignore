@@ -1,0 +1,14 @@
+*.gem
+Gemfile.lock
+*.rbc
+.bundle
+.config
+lib/bundler/man
+pkg
+rdoc
+spec/reports
+test/tmp
+test/version_tmp
+tmp
+# SimpleCov / Rcov
+coverage/
