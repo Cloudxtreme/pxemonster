@@ -34,6 +34,7 @@ ADD public /pxe/public
 ADD Gemfile /pxe/
 ADD config.ru /pxe/
 ADD pxe_monster.rb /pxe/
+
 RUN bundle install --without development
 
 

@@ -1,0 +1,10 @@
+---
+- ip: 10.0.0.2
+  pxe_template: ubuntu_1404.erb
+  kickstart_url: http://192.168.1.1/ubuntu_1404/ubuntu.ks
+- ip: 10.0.0.3
+  pxe_template: ubuntu_1404.erb
+  kickstart_url: http://192.168.1.1/ubuntu_1404/ubuntu.ks
+- bad: 'section'
+  pxe_template: ubuntu_1404.erb
+  kickstart_url: http://192.168.1.1/ubuntu_1404/ubuntu.ks

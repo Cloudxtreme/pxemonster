@@ -1,5 +1,6 @@
-source 'https://rubygems.org'
+source 'https://rubygems.org/'
 
+gem 'ipaddress'
 gem 'sinatra'
 gem 'puma'
 
