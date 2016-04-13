@@ -51,6 +51,19 @@ run --rm -ti -p 192.168.1.1:8080:80 -v /var/lib/tftpboot/pxelinux.cfg:/pxelinux.
 
 This will start pxemonister listing on your host on port 8080 and it will manage the local folder of /var/lib/pxelinux/pxelinux.cfg
 
+## Deamon
+
+You can run pxemonister in the background with this
+
+```
+docker run -ti -d -p 192.168.1.1:8080:80 -v /var/lib/tftpboot/pxelinux.cfg:/pxelinux.cfg cbitter78/pxemonister:0.0.3-0
+```
+
+You could add it to /etc/rc.local or a start up script.
+
+You can get the logs by using docker log [container id]
+
+
 ## Config
 
 A pxemonister.yml file must exits itn the mounted pxelinux.cfg folder.  It should look like this
