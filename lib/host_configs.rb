@@ -8,7 +8,7 @@ class HostConfigs  < Hash
 
 	attr_reader :config_dir
 
-	def initialize(path = '/pxelinxu.cfg') 
+	def initialize(path = '/pxelinux.cfg') 
  
  		@config_dir = Pathname.new(path)
  		return unless config_dir.exist?

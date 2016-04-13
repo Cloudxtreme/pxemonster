@@ -1,5 +1,5 @@
 
-VERSION=0.0.1
+VERSION=0.0.2
 RELEASE=0
 
 COLOR_NORMAL=""
@@ -22,11 +22,11 @@ spec_test:
 
 build: 
 	@echo ${COLOR_BOLD}➭${COLOR_RESET} ${COLOR_GREEN}Building Version ${VERSION}-${RELEASE}${COLOR_RESET}
-	@docker build --rm -q -t hub.docker.com/cbitter78/pxemonister:${VERSION}-${RELEASE} .
+	@docker build --rm -q -t cbitter78/pxemonister:${VERSION}-${RELEASE} .
 
 publish: build
 	@echo ${COLOR_BOLD}➭${COLOR_RESET} ${COLOR_GREEN}Publishing Version ${VERSION}-${RELEASE}${COLOR_RESET}
-	@docker push hub.docker.com/cbitter78/pxemonister:${VERSION}-${RELEASE}
+	@docker push cbitter78/pxemonister:${VERSION}-${RELEASE}
 
 clean:
 	@echo ${COLOR_BOLD}➭${COLOR_RESET} ${COLOR_GREEN}Cleaning artifacts${COLOR_RESET}

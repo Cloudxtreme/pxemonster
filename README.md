@@ -33,7 +33,7 @@ This offers a REST based way to set up for a build then simply reboot the target
 Pxe Monister will run as a docker container where you use the -v option to mount the local pxelinux folder under /pxelinux.cfg like this
 
 ```
--v /Users/cbitte000/Dev/pxemonster/spec/pxelinux.cfg:/pxelinxu.cfg
+-v /Users/cbitte000/Dev/pxemonster/spec/pxelinux.cfg:/pxelinux.cfg
 ```
 
 It is assumed you will set up your dhcp server to boot a given mac to the same ip address.  All the pxelinux.cfg files will be based on ip address ([as hex](http://www.syslinux.org/wiki/index.php?title=PXELINUX#Configuration)) not mac.  
@@ -42,8 +42,8 @@ It is assumed you will set up your dhcp server to boot a given mac to the same i
 ## Usage
 
 ```
-docker pull cbitter78/pxemonister
-docker run --rm -ti -p 8080:80 -v /var/lib/pxelinux/pxelinux.cfg:/pxelinxu.cfg hub.docker.com/cbitter78/pxemonister:0.0.1-0
+docker pull cbitter78/pxemonister:0.0.2-0
+run --rm -ti -p 192.168.1.1:8080:80 -v /var/lib/tftpboot/pxelinux.cfg:/pxelinux.cfg cbitter78/pxemonister:0.0.2-0
 
 ```
 
@@ -57,10 +57,10 @@ A pxemonister.yml file must exits itn the mounted pxelinux.cfg folder.  It shoul
 
 ```
 ---
-- ip: 10.0.0.2
+- ip: 192.168.1.20
   pxe_template: ubuntu_1404.erb
   kickstart_url: http://192.168.1.1/ubuntu_1404/ubuntu.ks
-- ip: 10.0.0.3
+- ip: 192.168.1.21
   pxe_template: ubuntu_1404.erb
   kickstart_url: http://192.168.1.1/ubuntu_1404/ubuntu.ks
 
@@ -74,6 +74,28 @@ The referanced pxe_template erb file must also exist in the same folder.
 ## Example
 
 Take a look at the spec/pxelinux.cfg folder for an example of how you should set yours up.
+
+
+### Pxe Files script
+
+Here is an easy way to create pxe files
+
+```
+for i in 21 22; do 
+curl -X POST "http://192.168.1.1:8080/pxe?spoof=192.168.1.$i"
+done
+
+```
+
+
+### Post KickStart delete command.
+
+This is the command I put in the post kick start to remove the pxe file.
+
+```
+curl -X DELETE "http://192.168.1.1:8080/pxe"
+```
+
 
 
 # License (MIT)
