@@ -1,8 +1,8 @@
 require_relative 'host_configs'
 require_relative 'pxe_file' 
 
+require 'fileutils'
 require 'pathname'
-require 'pp'
 
 
 class PXELinux 
@@ -22,18 +22,15 @@ class PXELinux
 		info = get(ip)
 		pxe_file = PxeFile.new(info)
 		pxe_file.write(@host_configs.config_dir)
-		info["pxe_file_exists"] = true
-		info
+		get(ip)
 	end
 
 	def delete(ip)
-	
-		info = @host_configs[ip.to_s]
-		raise NoConfigFoundForIp.new(ip) if info.nil?
+		info = get(ip)
 		pxe_file = @host_configs.config_dir.join(info["pxe_file_name"])
-		pxe_file.delete unless pxe_file.exist?
-		info["pxe_file_exists"] = false
-		info
+		FileUtils.rm_f pxe_file
+		puts "Removed File: #{pxe_file}"
+		get(ip)
 	end
 
 end

@@ -42,8 +42,8 @@ It is assumed you will set up your dhcp server to boot a given mac to the same i
 ## Usage
 
 ```
-docker pull cbitter78/pxemonister:0.0.2-0
-run --rm -ti -p 192.168.1.1:8080:80 -v /var/lib/tftpboot/pxelinux.cfg:/pxelinux.cfg cbitter78/pxemonister:0.0.2-0
+docker pull cbitter78/pxemonister:0.0.3-0
+run --rm -ti -p 192.168.1.1:8080:80 -v /var/lib/tftpboot/pxelinux.cfg:/pxelinux.cfg cbitter78/pxemonister:0.0.3-0
 
 ```
 

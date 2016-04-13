@@ -18,6 +18,7 @@ attr_reader :host_info
 	
 		template = ERB.new(pxe_template.read)
 		pxe_folder.join(host_info['pxe_file_name']).write(template.result(binding))
+		puts "Wrote File: #{pxe_folder.join(host_info['pxe_file_name'])}"
 	end
 
 end
